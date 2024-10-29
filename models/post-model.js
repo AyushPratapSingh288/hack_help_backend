@@ -14,13 +14,24 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    ifMentor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: user-model
+    isMentor: {
+        type: Boolean,
+        default: false
     },
-    reply: {
-        type: String,
-        
-    },
+    likes : [],
+    reply: [{
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user-model' 
+        },
+        replyText: {
+            type: String,
+            required: true
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     createdAt: { type: Date, default: Date.now }
 })
